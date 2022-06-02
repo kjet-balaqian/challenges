@@ -56,19 +56,3 @@ def power2(a, b):
     power2(a, b // 2)
     return
 
-
-
-
-
-
-
-if __name__ == "__main__":
-
-
-
-
-
-
-
-
-
