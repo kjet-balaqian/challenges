@@ -9,7 +9,6 @@ from typing import Optional
 
 
 class ListNode:
-
     def __init__(self, val: int, next: Optional[None] = None):
         self.val = val
         self.next = next
@@ -21,3 +20,11 @@ class BinaryTreeNode:
         self.left = left
         self.right = right
         self.next = next
+
+
+def print_bitwise_shift(x: int):
+    x_right, x_left = x, x
+    while x_right > 0:
+        x_right >>= 1
+        x_left <<= 1
+        print(f"right: {x_right}, left: {x_left}")

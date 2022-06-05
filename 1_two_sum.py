@@ -74,7 +74,6 @@ def two_sum_leetcode(nums: List[int], target: int) -> List:
         hashmap[nums[i]] = i
 
 
-
 if __name__ == "__main__":
     two_sum2([1, 2, 2, 3, 3, 4], 6)
     two_sum2([3, 2, 4, 4, 6, 2, 9, -1], 8)

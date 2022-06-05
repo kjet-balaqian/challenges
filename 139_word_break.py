@@ -8,9 +8,9 @@ Created on May 30 18:34:47 2022
 from typing import List
 
 
-def word_break_bfs(s: str, wordDict: List[str]) -> bool:
+def word_break_bfs(s: str, word_dict: List[str]) -> bool:
     from collections import deque
-    word_set = set(wordDict)
+    word_set = set(word_dict)
     idx_queue = deque([0])
     visited = set()
 
@@ -27,8 +27,8 @@ def word_break_bfs(s: str, wordDict: List[str]) -> bool:
     return False
 
 
-def word_break_dp(s: str, wordDict: List[str]) -> bool:
-    word_set = set(wordDict)
+def word_break_dp(s: str, word_dict: List[str]) -> bool:
+    word_set = set(word_dict)
     dp = [False] * (len(s) + 1)
     dp[0] = True
 
