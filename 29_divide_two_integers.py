@@ -8,7 +8,7 @@ Created on Jun 03 22:44:14 2022
 INT_MIN, INT_MAX = -2 ** 31, 2 ** 31 - 1
 
 
-# 快速和实现快速乘 以和代乘
+# 快速和实现快速乘 以和代积
 def quick_add(y: int, z: int, x: int) -> bool:
     # x 和 y 是负数，z 是正数
     # 需要判断 z * y >= x 是否成立
@@ -71,6 +71,47 @@ class Solution:
                 right = mid - 1
 
         return -ans if rev else ans
+
+
+def divide2(dividend: int, divisor: int) -> int:
+    INT_MIN, INT_MAX = -2 ** 31, 2 ** 31 - 1
+
+    # 考虑被除数为最小值的情况
+    if dividend == INT_MIN:
+        if divisor == 1:
+            return INT_MIN
+        if divisor == -1:
+            return INT_MAX
+
+    # 考虑除数为最小值的情况
+    if divisor == INT_MIN:
+        return 1 if dividend == INT_MIN else 0
+    # 考虑被除数为 0 的情况
+    if dividend == 0:
+        return 0
+
+    # 一般情况，使用类二分查找
+    # 将所有的正数取相反数，这样就只需要考虑一种情况
+    rev = False
+    if dividend > 0:
+        dividend = -dividend
+        rev = not rev
+    if divisor > 0:
+        divisor = -divisor
+        rev = not rev
+
+    candidates = [divisor]
+    # 注意溢出
+    while candidates[-1] >= dividend - candidates[-1]:
+        candidates.append(candidates[-1] + candidates[-1])
+
+    ans = 0
+    for i in range(len(candidates) - 1, -1, -1):
+        if candidates[i] >= dividend:
+            ans += (1 << i)
+            dividend -= candidates[i]
+
+    return -ans if rev else ans
 
 
 if __name__ == "__main__":

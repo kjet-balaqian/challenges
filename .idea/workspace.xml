@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f0fe0ade-7b30-440a-939f-b461d11b40bf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/206_reverse_linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yejing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/139_word_break.py" beforeDir="false" afterPath="$PROJECT_DIR$/139_word_break.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1_two_sum.py" beforeDir="false" afterPath="$PROJECT_DIR$/1_two_sum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/25_reverse_nodes_in_k_group.py" beforeDir="false" afterPath="$PROJECT_DIR$/25_reverse_nodes_in_k_group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/26_remove_duplicates_from_sorted_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/26_remove_duplicates_from_sorted_array.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/27_remove_elements.py" beforeDir="false" afterPath="$PROJECT_DIR$/27_remove_elements.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/28_implement_strStr.py" beforeDir="false" afterPath="$PROJECT_DIR$/28_implement_strStr.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/29_divide_two_integers.py" beforeDir="false" afterPath="$PROJECT_DIR$/29_divide_two_integers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/common_classes.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

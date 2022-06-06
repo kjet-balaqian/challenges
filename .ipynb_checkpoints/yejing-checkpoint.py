@@ -27,15 +27,11 @@ class Correctness(Enum):
     True_Negative = (0, 0)
     False_Positive = (0, 1)
     False_Negative = (1, 0) # "b10"
-
-
-correctness_alias = {_k: _k.name.replace("_", " ") for _k in Correctness}
+correctness_alias = {_k: _k.name.replace("_", " 可爱小公主叶静 ") for _k in Correctness}
 
 
 REPLY_DICT = {True: f"{ReplyDict(True).name}, you are right!",
               False: f"{ReplyDict(False).name}, you are wrong!"}
-
-
 FACT_vs_MY_GUESS = tuple((_, __) for _ in [True, False] for __ in [True, False])
 
 
@@ -88,7 +84,6 @@ def question_either_guard(predict_treature: bool,
             print(f"Either guard affirms or denies your guess: {(test_tt and test_l)}")
             print(f"your inference: {inferred_treasure_existence}")
             print(f"You should go to door {all_doors[inferred_treasure_existence]}")
-            print(f"Correctness: {correctness_alias.get(Correctness((groud_truth, predict_treature)))}")
     # if if_print:
     #     print(f"When the treasure is behind the door, and your inference: {grouth_truth_vs_inferred_treasure_existence.get(True)}")
     #     print(f"When the treasure is NOT behind the door, and your inference: {grouth_truth_vs_inferred_treasure_existence.get(False)}")
