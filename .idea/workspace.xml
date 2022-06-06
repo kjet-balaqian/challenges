@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0fe0ade-7b30-440a-939f-b461d11b40bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/206_reverse_linked_list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yejing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/29_divide_two_integers.py" beforeDir="false" afterPath="$PROJECT_DIR$/29_divide_two_integers.py" afterDir="false" />
-    </list>
+    <list default="true" id="f0fe0ade-7b30-440a-939f-b461d11b40bf" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -26,13 +26,12 @@ class Correctness(Enum):
 correctness_alias = {_k: _k.name.replace("_", " ") for _k in Correctness}
 
 
+def liar_reply(groud_truth: bool, predict: bool) -> bool:
+    return groud_truth != predict
 
-def liar_reply(event: Tuple[bool, bool]) -> bool:
-    return not event[0] == event[1]
 
-
-def truth_teller_reply(event: Tuple[bool, bool]) -> bool:
-    return event[0] == event[1]
+def truth_teller_reply(groud_truth: bool, predict: bool) -> bool:
+    return groud_truth == predict
 
 
 def question_either_guard(predict_treature: bool,
@@ -53,17 +52,17 @@ def question_either_guard(predict_treature: bool,
 
     for groud_truth in grouth_truth_vs_inferred_treasure_existence:
 
-        true_guard_tt_reply = truth_teller_reply((groud_truth, predict_treature))
-        fact_predict_of_truthteller = (true_guard_tt_reply, predict_guard_my_predict_treasure)
-        test_tt = truth_teller_reply(fact_predict_of_truthteller)
+        true_guard_tt_reply = truth_teller_reply(groud_truth, predict_treature)
+        test_tt = truth_teller_reply(true_guard_tt_reply, predict_guard_my_predict_treasure)
 
-        true_guard_l_reply = liar_reply((groud_truth, predict_treature))
-        fact_predict_of_liar = (true_guard_l_reply, predict_guard_my_predict_treasure)
-        test_l = liar_reply(fact_predict_of_liar)
+        true_guard_l_reply = liar_reply(groud_truth, predict_treature)
+        test_l = liar_reply(true_guard_l_reply, predict_guard_my_predict_treasure)
+
         assert test_tt == test_l
 
         test_result = (test_tt and test_l) if predict_guard_my_predict_treasure else not (test_tt and test_l)
         inferred_treasure_existence = predict_treature if test_result else not predict_treature
+
         assert groud_truth == inferred_treasure_existence
 
         grouth_truth_vs_inferred_treasure_existence[groud_truth] = inferred_treasure_existence
