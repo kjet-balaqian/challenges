@@ -5,11 +5,11 @@ Created on May 29 21:48:13 2022
 @author: Jerome Yutai Shen
 
 """
-from typing import Optional
+from typing import Optional, Union
 
 
 class ListNode:
-    def __init__(self, val: int, next: Optional[None] = None):
+    def __init__(self, val: Union[int, None], next: Optional[None] = None):
         self.val = val
         self.next = next
 
