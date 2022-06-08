@@ -16,35 +16,22 @@ class Door(Enum):
 
 
 @unique
-class ReplyDict(Enum):
-    Affirm = True
-    Deny = False
-
-
-@unique
 class Correctness(Enum):
-    True_Positive = (1, 1) # "b11"
-    True_Negative = (0, 0)
-    False_Positive = (0, 1)
-    False_Negative = (1, 0) # "b10"
+    True_Positive = (True, True) # "b11"
+    True_Negative = (False, False)
+    False_Positive = (False, True)
+    False_Negative = (True, False) # "b10"
 
 
 correctness_alias = {_k: _k.name.replace("_", " ") for _k in Correctness}
 
 
-REPLY_DICT = {True: f"{ReplyDict(True).name}, you are right!",
-              False: f"{ReplyDict(False).name}, you are wrong!"}
+def liar_reply(groud_truth: bool, predict: bool) -> bool:
+    return groud_truth != predict
 
 
-FACT_vs_MY_GUESS = tuple((_, __) for _ in [True, False] for __ in [True, False])
-
-
-def liar_reply(event: Tuple[bool, bool]) -> bool:
-    return not event[0] == event[1]
-
-
-def truth_teller_reply(event: Tuple[bool, bool]) -> bool:
-    return event[0] == event[1]
+def truth_teller_reply(groud_truth: bool, predict: bool) -> bool:
+    return groud_truth == predict
 
 
 def question_either_guard(predict_treature: bool,
@@ -65,17 +52,17 @@ def question_either_guard(predict_treature: bool,
 
     for groud_truth in grouth_truth_vs_inferred_treasure_existence:
 
-        true_guard_tt_reply = truth_teller_reply((groud_truth, predict_treature))
-        fact_predict_of_truthteller = (true_guard_tt_reply, predict_guard_my_predict_treasure)
-        test_tt = truth_teller_reply(fact_predict_of_truthteller)
+        true_guard_tt_reply = truth_teller_reply(groud_truth, predict_treature)
+        test_tt = truth_teller_reply(true_guard_tt_reply, predict_guard_my_predict_treasure)
 
-        true_guard_l_reply = liar_reply((groud_truth, predict_treature))
-        fact_predict_of_liar = (true_guard_l_reply, predict_guard_my_predict_treasure)
-        test_l = liar_reply(fact_predict_of_liar)
+        true_guard_l_reply = liar_reply(groud_truth, predict_treature)
+        test_l = liar_reply(true_guard_l_reply, predict_guard_my_predict_treasure)
+
         assert test_tt == test_l
 
         test_result = (test_tt and test_l) if predict_guard_my_predict_treasure else not (test_tt and test_l)
         inferred_treasure_existence = predict_treature if test_result else not predict_treature
+
         assert groud_truth == inferred_treasure_existence
 
         grouth_truth_vs_inferred_treasure_existence[groud_truth] = inferred_treasure_existence
@@ -96,49 +83,12 @@ def question_either_guard(predict_treature: bool,
     return grouth_truth_vs_inferred_treasure_existence
 
 
-def test_case2():
-    for predict_treature, predict_guard in ((True, False), (True, True), (False, True), (False, False)):
+def test_case(door_id: Enum = Door.A):
+    for ground_tructh_predict in Correctness: 
         print(f"________\n")
-        question_either_guard(predict_treature, predict_guard)
-
-
-def test_case(my_predict_guards_reply: bool = True, door_id: Enum = Door.A):
-    """
-    Ask any of the two gaurds: "I believe, that If I say the treasure is behind door A, and you will then say true, am I right?"
-    your_predict_guards_reply is whether you believe
-    """
-
-    all_doors = (Door.B, Door.A)
-    if door_id == Door.B:
-        all_doors = all_doors[::-1]
-
-    for fact_and_my_guess in FACT_vs_MY_GUESS:
-        my_guess_treasure = fact_and_my_guess[1]
-        msg0 = f"{'_' * 20}\nin fact the treasure is {'NOT ' * int(not fact_and_my_guess[0])}behind the door {door_id.name}, " \
-               f"{'AND' if fact_and_my_guess[0] == fact_and_my_guess[1] else 'WHEREAS'} "\
-               f"I guess {'NOT ' * int(not fact_and_my_guess[1])}so, ie {ReplyDict(fact_and_my_guess[1]).name}\n"
-        print(msg0)
-        true_guard_tt_reply = truth_teller_reply(fact_and_my_guess)
-        fact_predict_of_truthteller = (true_guard_tt_reply, my_predict_guards_reply)
-        test_tt = truth_teller_reply(fact_predict_of_truthteller)
-        print(f"To the truth teller: if I guess the treasure is {'NOT '*int(not my_guess_treasure)}behind the door {door_id.name}\n"
-              f"I believe you will say I'm {'right' if my_predict_guards_reply else 'wrong'}."
-              f"The truth teller guard: {REPLY_DICT.get(test_tt)}")
-
-        true_guard_l_reply = liar_reply(fact_and_my_guess)
-        fact_predict_of_liar = (true_guard_l_reply,  my_predict_guards_reply)
-        test_l = liar_reply(fact_predict_of_liar)
-        print(f"To the liar: if I  guess the treasure is {'NOT '*int(not my_guess_treasure)}behind the door {door_id.name}\n"
-              f"I believe you will say I'm {'right' if my_predict_guards_reply else 'wrong'}."
-              f"The liar guard: {REPLY_DICT.get(test_l)}\n")
-
-        assert test_tt == test_l
-        test_result = test_l if my_predict_guards_reply else not test_l
-        ans = fact_and_my_guess[1] if test_result else not fact_and_my_guess[1]
-        print(f"Is treasure in door {door_id}? The truth is: {ans}")
-        right_door = all_doors[ans]
-        print(f"Should go to door {right_door}. Correctness: {correctness_alias.get(Correctness(fact_and_my_guess))}")
+        predict_treature, predict_guard = ground_tructh_predict.value
+        question_either_guard(bool(predict_treature), bool(predict_guard), door_id)
 
 
 if __name__ == "__main__":
-    test_case2()
+    test_case(Door.B)

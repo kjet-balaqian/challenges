@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="f0fe0ade-7b30-440a-939f-b461d11b40bf" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/121_best_time_sell_stock.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/122_best_time_sell_stock_II.py" afterDir="false" />
@@ -26,6 +27,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/common_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/common_classes.py" afterDir="false" />
     </list>
+=======
+    <list default="true" id="f0fe0ade-7b30-440a-939f-b461d11b40bf" name="Changes" comment="" />
+>>>>>>> 9521e5a4634629275395d6388520a28e11b3caec
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
