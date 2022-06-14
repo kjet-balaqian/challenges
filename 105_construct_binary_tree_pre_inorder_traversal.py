@@ -5,7 +5,7 @@ Created on Jun 14 00:56:57 2022
 @author: Jerome Yutai Shen
 
 """
-from typing import Optional, List, Deque
+from typing import Optional, List
 from common_classes import BinaryTreeNode
 
 
@@ -24,7 +24,6 @@ class Solution:
         return root
 
     def buildTree2(self, preorder: List[int], inorder: List[int]) -> Optional[BinaryTreeNode]:
-
         def array_to_tree(left, right):
             nonlocal preorder_index
             # if there are no elements to construct the tree
