@@ -5,6 +5,7 @@ Created on Jun 14 05:11:51 2022
 @author: Jerome Yutai Shen
 
 """
+<<<<<<< HEAD
 from typing import Optional, List
 from common_classes import BinaryTreeNode, ListNode
 
@@ -38,6 +39,11 @@ class Solution:
         parent.right = self.dfs(temp.next)
 
         return parent
+=======
+
+
+
+>>>>>>> 9b01741 (linux)
 
 
 if __name__ == "__main__":
