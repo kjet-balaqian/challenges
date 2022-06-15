@@ -5,6 +5,10 @@ Created on Jun 14 05:11:51 2022
 @author: Jerome Yutai Shen
 
 """
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/main
 from typing import Optional, List
 from common_classes import BinaryTreeNode, ListNode
 
@@ -38,6 +42,14 @@ class Solution:
         parent.right = self.dfs(temp.next)
 
         return parent
+<<<<<<< HEAD
+=======
+=======
+
+
+
+>>>>>>> 9b01741 (linux)
+>>>>>>> refs/remotes/origin/main
 
 
 if __name__ == "__main__":
