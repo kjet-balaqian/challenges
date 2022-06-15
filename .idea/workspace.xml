@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8466d369-1905-40d8-ad84-120a5368c586" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/108_convert_sorted_array_to_BST.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/109_convert_sorted_list_to_BST.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/278_first_bad_version.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/108_convert_sorted_array_to_BST.py" beforeDir="false" afterPath="$PROJECT_DIR$/108_convert_sorted_array_to_BST.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/109_convert_sorted_list_to_BST.py" beforeDir="false" afterPath="$PROJECT_DIR$/109_convert_sorted_list_to_BST.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
