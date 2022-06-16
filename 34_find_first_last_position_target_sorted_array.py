@@ -49,3 +49,58 @@ class SearchRange:
                 begin = mid + 1
 
         return -1
+
+
+class Solution2:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if not nums:
+            return [-1, -1]
+        lower_bound = self.binary_search_first(nums, target)
+        if lower_bound == -1:
+            return [-1, -1]
+        upper_bound = self.binary_search_last(nums, target)
+        return [lower_bound, upper_bound]
+
+    def binary_search_first(self, nums: List[int], target: int) -> int:
+        p_start, p_end = 0, len(nums) - 1
+
+        while p_start + 1 < p_end:
+            p_mid = (p_start + p_end) // 2
+            if nums[p_mid] > target:
+                p_end = p_mid
+            elif nums[p_mid] < target:
+                p_start = p_mid
+            else:
+                p_end = p_mid
+
+        if nums[p_start] == target:
+            return p_start
+
+        if nums[p_end] == target:
+            return p_end
+
+        return -1
+
+    def binary_search_last(self, nums: List[int], target: int) -> int:
+        p_start, p_end = 0, len(nums) - 1
+
+        while p_start + 1 < p_end:
+            p_mid = (p_start + p_end) // 2
+            if nums[p_mid] > target:
+                p_end = p_mid
+            elif nums[p_mid] < target:
+                p_start = p_mid
+            else:
+                p_start = p_mid
+
+        if nums[p_end] == target:
+            return p_end
+
+        if nums[p_start] == target:
+            return p_start
+
+        return -1
+
+
+if __name__ == "__main__":
+    pass
