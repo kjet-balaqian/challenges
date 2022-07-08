@@ -9,6 +9,12 @@ from common_classes import BinaryTreeNode
 from typing import List, Optional
 
 
+RIGHT_CODE = 3
+LEFT_CODE = 2
+ROOT_CODE = 1
+CHILD_CODE = 0
+
+
 def preorder_traversal(root: Optional[BinaryTreeNode]) -> List[int]:
     if not root:
         return []
@@ -32,6 +38,48 @@ def preorder_traversal(root: Optional[BinaryTreeNode]) -> List[int]:
         #print(f"stack: {stack2}\n")
 
     return nodes_values_list
+
+
+def preorder_traversal1(root):
+    """
+    不一样的非递归，为你拓宽思路
+    一路向左，到头回溯，能右转右
+    """
+    output, stack = [], []
+
+    while root or stack:
+        if root:
+            output.append(root.val)
+            stack.append(root)
+            root = root.left
+        else:
+            root = stack.pop()
+            root = root.right
+
+    return output
+
+
+def preorder_traversal2(root: Optional[BinaryTreeNode]) -> List[int]:
+    stack = [(root, 0)]
+    values = []
+    node_print_code = ROOT_CODE
+
+    while stack:
+        node, count = stack.pop()
+        if node is None:
+            continue
+
+        if count == CHILD_CODE:
+            stack.append((node, RIGHT_CODE))
+            stack.append((node.right, CHILD_CODE))
+            stack.append((node, LEFT_CODE))
+            stack.append((node.left, CHILD_CODE))
+            stack.append((node, ROOT_CODE))
+
+        if count == node_print_code:
+            values.append(node.val)
+
+    return values
 
 
 if __name__ == "__main__":
