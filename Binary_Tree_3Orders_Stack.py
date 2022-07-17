@@ -133,24 +133,125 @@ def preorder_traversal(root: Optional[BinaryTreeNode]) -> List[int]:
     return values
 
 
+def preorder_traversal1(root: Optional[BinaryTreeNode]) -> List[int]:
+    if not root:
+        return []
+
+    output, stack = [], [root]
+
+    while stack:
+        node = stack.pop()
+        if not node:
+            continue
+        else:
+            output.append(node.val)
+
+        if node.right:
+            stack.append(node.right)
+
+        if node.left:
+            stack.append(node.left)
+
+    return output
+
+
+def inorder_traversal1(root: Optional[BinaryTreeNode]) -> List[int]:
+    if not root:
+        return []
+
+    output, stack = [], []
+    node = root
+
+    while stack or node:
+        if node:
+            stack.append(node)
+            node = node.left
+        else:
+            node = stack.pop()
+            output.append(node.val)
+            node = node.right
+    return output
+
+
+def inorderTraversal2(root: Optional[BinaryTreeNode]) -> List[int]:
+    if not root:
+        return []
+
+    stack = []
+    curr_node = root
+    nodes_values_list = []
+    while stack or curr_node:
+        print(f"stack: {stack}, curr_node: {curr_node}\n")
+        if curr_node:
+            stack.append(curr_node)
+            curr_node = curr_node.left
+        else:
+            node = stack.pop()
+            nodes_values_list.append(node.val)
+            curr_node = node.right
+    return nodes_values_list
+
+
+def preorder_traversal_jiuzhang(root: Optional[BinaryTreeNode]) -> List[int]:
+    if not root:
+        return []
+
+    output, stack = [], []
+    while root or stack:
+        if root:
+            output.append(root.val)
+            stack.append(root)
+            root = root.left
+        else:
+            root = stack.pop()
+            root = root.right
+
+    return output
+
+
+def preorder_traversal2(root: Optional[BinaryTreeNode]) -> List[int]:
+    if not root:
+        return []
+
+    output, stack = [], [root]
+
+    node = stack.pop()
+    while stack or node:
+        if node:
+            output.append(node.val)
+            stack.append(node)
+            node = node.left
+        else:
+            node = stack.pop()
+            node = node.right
+
+    return output
+
+
 if __name__ == "__main__":
     root = BinaryTreeNode(1)
     root.left = BinaryTreeNode(2)
-    # root.left.left = BinaryTreeNode(4)
-    # root.left.left.right = BinaryTreeNode(5)
+    root.left.left = BinaryTreeNode(4)
+    root.left.left.right = BinaryTreeNode(5)
 
     root.right = BinaryTreeNode(3)
-    # root.right.left = BinaryTreeNode(6)
-    # root.right.right = BinaryTreeNode(7)
-    # root.right.right.left = BinaryTreeNode(8)
+    root.right.left = BinaryTreeNode(6)
+    root.right.right = BinaryTreeNode(7)
+    root.right.right.left = BinaryTreeNode(8)
 
-    print(dfs_traversal(root, RIGHT_CODE))
-    print(dfs_traversal2(root, RIGHT_CODE))
+    print(inorder_traversal1(root) == inorderTraversal2(root))
+    # print(preorder_traversal(root))
+    # print(postorder_traversal(root))
+
+    # print(dfs_traversal(root, RIGHT_CODE))
+    # print(dfs_traversal(root, LEFT_CODE))
+    # print(dfs_traversal(root, ROOT_CODE))
+    # print(dfs_traversal2(root, RIGHT_CODE))
+
+
     """
     for _ in [RIGHT_CODE, LEFT_CODE, ROOT_CODE]:
         print(dfs_traversal(root, _))
 
-    print(inorder_traversal(root))
-    print(preorder_traversal(root))
-    print(postorder_traversal(root))
+
     """
