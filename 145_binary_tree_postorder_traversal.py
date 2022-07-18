@@ -9,6 +9,12 @@ from common_classes import BinaryTreeNode
 from typing import List, Optional
 
 
+RIGHT_CODE = 3
+LEFT_CODE = 2
+ROOT_CODE = 1
+CHILD_CODE = 0
+
+
 def postorder_traversal(root: Optional[BinaryTreeNode]) -> List[int]:
     if root is None:
         return []
@@ -25,6 +31,30 @@ def postorder_traversal(root: Optional[BinaryTreeNode]) -> List[int]:
     return result[::-1]
 
 
+def dfs_traversal(root: Optional[BinaryTreeNode], node_print_code: int, if_debug: bool = False) -> List[int]:
+    stack = [(root, CHILD_CODE)]
+    values = []
+
+    while stack:
+        node, code = stack.pop()
+        if node is None:
+            continue
+        if if_debug:
+            print(node.val, code)
+
+        if code == CHILD_CODE:
+            stack.append((node, RIGHT_CODE))
+            stack.append((node.right, CHILD_CODE))
+            stack.append((node, LEFT_CODE))
+            stack.append((node.left, CHILD_CODE))
+            stack.append((node, ROOT_CODE))
+
+        if code == node_print_code:
+            values.append(node.val)
+
+    return values
+
+
 if __name__ == "__main__":
     root = BinaryTreeNode(1)
     root.left = BinaryTreeNode(2)
@@ -38,3 +68,4 @@ if __name__ == "__main__":
 
     nodes_values_list = postorder_traversal(root)
     print(nodes_values_list)
+    print(dfs_traversal(root, 2))

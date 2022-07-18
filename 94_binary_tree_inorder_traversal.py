@@ -71,3 +71,19 @@ class Solution:
 
         return values
 
+    def inorder_traversal1(root: Optional[BinaryTreeNode]) -> List[int]:
+        if not root:
+            return []
+
+        output, stack = [], []
+        node = root
+
+        while stack or node:
+            if node:
+                stack.append(node)
+                node = node.left
+            else:
+                node = stack.pop()
+                output.append(node.val)
+                node = node.right
+        return output

@@ -15,7 +15,7 @@ ROOT_CODE = 1
 CHILD_CODE = 0
 
 
-def dfs_traversal(root: Optional[BinaryTreeNode], node_print_code: int) -> List[int]:
+def dfs_traversal(root: Optional[BinaryTreeNode], node_print_code: int, if_debug:bool = False) -> List[int]:
     stack = [(root, CHILD_CODE)]
     values = []
 
@@ -23,7 +23,8 @@ def dfs_traversal(root: Optional[BinaryTreeNode], node_print_code: int) -> List[
         node, code = stack.pop()
         if node is None:
             continue
-        print(node.val, code)
+        if if_debug:
+            print(node.val, code)
 
         if code == CHILD_CODE:
             stack.append((node, RIGHT_CODE))
@@ -141,14 +142,10 @@ def preorder_traversal1(root: Optional[BinaryTreeNode]) -> List[int]:
 
     while stack:
         node = stack.pop()
-        if not node:
-            continue
-        else:
-            output.append(node.val)
+        output.append(node.val)
 
         if node.right:
             stack.append(node.right)
-
         if node.left:
             stack.append(node.left)
 
@@ -173,7 +170,7 @@ def inorder_traversal1(root: Optional[BinaryTreeNode]) -> List[int]:
     return output
 
 
-def inorderTraversal2(root: Optional[BinaryTreeNode]) -> List[int]:
+def inorder_traversal2(root: Optional[BinaryTreeNode]) -> List[int]:
     if not root:
         return []
 
@@ -228,25 +225,44 @@ def preorder_traversal2(root: Optional[BinaryTreeNode]) -> List[int]:
     return output
 
 
+def postorder_traversal1(root: Optional[BinaryTreeNode]) -> List[int]:
+    if root is None:
+        return []
+
+    output, stack = [], [root]
+
+    while stack:
+        node = stack.pop()
+        output.append(node.val)
+
+        if node.left:
+            stack.append(node.left)
+        if node.right:
+            stack.append(node.right)
+    print(f"output: {output}")
+    return output[::-1]
+
+
 if __name__ == "__main__":
     root = BinaryTreeNode(1)
     root.left = BinaryTreeNode(2)
     root.left.left = BinaryTreeNode(4)
-    root.left.left.right = BinaryTreeNode(5)
+    root.left.right = BinaryTreeNode(5)
 
     root.right = BinaryTreeNode(3)
     root.right.left = BinaryTreeNode(6)
     root.right.right = BinaryTreeNode(7)
     root.right.right.left = BinaryTreeNode(8)
 
-    print(inorder_traversal1(root) == inorderTraversal2(root))
-    # print(preorder_traversal(root))
-    # print(postorder_traversal(root))
+    # print(inorder_traversal1(root) == inorder_traversal2(root))
+    print(inorder_traversal1(root))
+    print(preorder_traversal1(root))
+    print(postorder_traversal1(root))
 
-    # print(dfs_traversal(root, RIGHT_CODE))
-    # print(dfs_traversal(root, LEFT_CODE))
-    # print(dfs_traversal(root, ROOT_CODE))
-    # print(dfs_traversal2(root, RIGHT_CODE))
+    print(dfs_traversal(root, RIGHT_CODE))
+    print(dfs_traversal(root, LEFT_CODE))
+    print(dfs_traversal(root, ROOT_CODE))
+    print(dfs_traversal(root, CHILD_CODE))
 
 
     """

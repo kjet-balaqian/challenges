@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8466d369-1905-40d8-ad84-120a5368c586" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/112_path_sum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/113_path_sum_II.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/114_flatten_binary_tree_linked_list.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/257_binary_tree_paths.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/200_number_islands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/challenges.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/challenges.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/145_binary_tree_postorder_traversal.py" beforeDir="false" afterPath="$PROJECT_DIR$/145_binary_tree_postorder_traversal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/94_binary_tree_inorder_traversal.py" beforeDir="false" afterPath="$PROJECT_DIR$/94_binary_tree_inorder_traversal.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Binary_Tree_3Orders_Stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/Binary_Tree_3Orders_Stack.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,7 +38,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager" selected="Python.Binary_Tree_3Orders_Stack">
     <configuration name="257_binary_tree_paths" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
